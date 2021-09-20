@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router()
 const classesController = require('../controllers/classes')
 
-router.get('/all-classes')
+router.get('/all-classes',classesController.getAllClasses)
 
 router.get('/get-class/:classId', classesController.getClass)
 

@@ -1,7 +1,9 @@
 const Class = require('../models/classes')
 
 exports.getAllClasses = (req, res, next) => {
-
+    Class.fetchAllClasses().then(classes => {
+        res.send(classes[0])
+    }).catch(err => res.send(err))
 }
 
 exports.getClass = (req, res, next) => {

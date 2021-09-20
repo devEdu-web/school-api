@@ -21,7 +21,7 @@ module.exports = class Class {
     }
 
     static fetchAllClasses() {
-
+        return database.query('SELECT * FROM classes')
     }
 
     static fetchClass(id) {
