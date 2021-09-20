@@ -6,6 +6,8 @@ router.get('/all-classes')
 
 router.get('/class/:classId')
 
-router.post('/new-class')
+router.post('/new-class', classesController.postClass)
+
+router.delete('/delete-class')
 
 module.exports = router

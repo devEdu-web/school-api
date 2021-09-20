@@ -8,6 +8,7 @@ router.get('/student/:studentId')
 
 router.post('/new-student')
 
+router.delete('/delete-student')
 
 
 
