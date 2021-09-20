@@ -29,7 +29,7 @@ module.exports = class Class {
     }
 
     static deleteById(id) {
-
+        return database.query('DELETE FROM classes where class_id = ?', [id])
     }
 
     static deleteAll() {

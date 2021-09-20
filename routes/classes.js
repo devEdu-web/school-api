@@ -8,7 +8,7 @@ router.get('/get-class/:classId', classesController.getClass)
 
 router.post('/new-class', classesController.postClass)
 
-router.delete('/delete-class')
+router.delete('/delete-class/:classId', classesController.deleteClass)
 
 router.put('/edit-class/:classId', classesController.editClass)
 

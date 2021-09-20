@@ -44,3 +44,11 @@ exports.editClass = (req, res, next) => {
         res.send(err)
     })
 }
+
+exports.deleteClass = (req, res, next) => {
+    const classId = req.params.classId
+
+    Class.deleteById(classId).then(result => {
+        res.send(result)
+    }).catch(err => res.send(err))
+}
