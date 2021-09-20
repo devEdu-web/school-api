@@ -52,3 +52,9 @@ exports.deleteClass = (req, res, next) => {
         res.send(result)
     }).catch(err => res.send(err))
 }
+
+exports.deleteAllClasses = (req, res, next) => {
+    Class.deleteAll().then(result => {
+        res.send(result)
+    }).catch(err => res.send(err))
+}

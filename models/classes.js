@@ -33,6 +33,6 @@ module.exports = class Class {
     }
 
     static deleteAll() {
-
+        return database.query('DELETE FROM classes')
     }
 }

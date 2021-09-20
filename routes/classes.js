@@ -10,6 +10,8 @@ router.post('/new-class', classesController.postClass)
 
 router.delete('/delete-class/:classId', classesController.deleteClass)
 
+router.delete('/delete-classes', classesController.deleteAllClasses)
+
 router.put('/edit-class/:classId', classesController.editClass)
 
 module.exports = router
