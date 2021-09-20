@@ -4,10 +4,12 @@ const classesController = require('../controllers/classes')
 
 router.get('/all-classes')
 
-router.get('/class/:classId')
+router.get('/get-class/:classId', classesController.getClass)
 
 router.post('/new-class', classesController.postClass)
 
 router.delete('/delete-class')
+
+router.put('/edit-class/:classId', classesController.editClass)
 
 module.exports = router
