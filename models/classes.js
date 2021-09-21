@@ -12,11 +12,6 @@ module.exports = class Class {
     }
 
     static editClassById(classId, class_name = null, class_grade = null) {
-        // const classToUpdate = this.fetchClass(id).then(fetchedClass => {
-        //     return fetchedClass
-        // }).catch(err => console.log(err))
-
-        // return classToUpdate
         return database.query('UPDATE classes set class_name = ?, class_grade = ? where class_id = ?', [class_name, class_grade, classId])
     }
 

@@ -8,8 +8,11 @@ module.exports = class Student {
         this.classId = classId
     }
 
+    static createStudent(name = null, age = null, grade = null, className = null) {
+        
+        return database.query('INSERT INTO students (name, age, grade, class_name) values (?, ?, ?, ?)', [name, age, grade, className])
 
-
+    }
 
 
 }

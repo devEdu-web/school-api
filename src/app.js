@@ -9,12 +9,12 @@ app.use('/api/students', studentsRoutes)
 app.use('/api/classes', classesRoutes)
 
 database.query(
-    'CREATE TABLE IF NOT EXISTS classes (class_id int unsigned not null auto_increment, class_name varchar(255) not null, class_grade int unsigned not null, primary key (class_id))'
+    'CREATE TABLE IF NOT EXISTS classes (class_name varchar(255) not null, class_grade int unsigned not null, primary key (class_name))'
 ).then(result => console.log(result)).catch(err => console.log(err))
 
 
 database.query(
-    'CREATE TABLE IF NOT EXISTS students (student_id int unsigned not null auto_increment, name varchar(255) not null, age int unsigned not null, grade int unsigned not null, class_id int unsigned not null, primary key (student_id), foreign key (class_id) references classes (class_id))'
+    'CREATE TABLE IF NOT EXISTS students (student_id int unsigned not null auto_increment, name varchar(255) not null, age int unsigned not null, grade int unsigned not null, class_name varchar(255) not null, primary key (student_id), foreign key (class_name) references classes (class_name))'
 ).then(result => console.log(result)).catch(err => console.log(err))
 
 // Tu precisa traalhar no database
