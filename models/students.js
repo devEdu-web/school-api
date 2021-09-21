@@ -18,4 +18,7 @@ module.exports = class Student {
         return database.query('SELECT * FROM students')
     }
 
+    static getStudent(id) {
+        return database.query('SELECT * FROM students where student_id = ?', [id])
+    }
 }

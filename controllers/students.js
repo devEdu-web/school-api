@@ -6,7 +6,12 @@ exports.getAllStudents = (req, res, next) => {
     .catch(err => res.send(err))
 }
 
-exports.getStudent = (req, res, next) => {}
+exports.getStudent = (req, res, next) => {
+    const studentId = req.params.studentId
+    Students.getStudent(studentId)
+    .then(student => res.send(student[0]))
+    .catch(err => res.send(err))
+}
 
 exports.postStudent = (req, res, next) => {
     const student = req.body
