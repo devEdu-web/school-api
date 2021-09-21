@@ -29,4 +29,23 @@ module.exports = class Student {
     static deleteAll() {
         return database.query('DELETE FROM students')
     }
+
+    static editStudent(id, name = null, age = null, grade = null, className = null) {
+        return this.getStudent(id)
+        .then(student => {
+
+            const currentStudent = student[0][0]
+            const updatedStudent = {
+                studentId: currentStudent.student_id,
+                studentName: name || currentStudent.name,
+                studentAge: age || currentStudent.age,
+                studentGrade: grade || currentStudent.grade,
+                studentClass: className || currentStudent.class_name
+            }
+
+            return database.query('UPDATE students SET name = ?, age = ?, grade = ?, class_name = ?', [updatedStudent.studentName, updatedStudent.studentAge, updatedStudent.studentGrade, updatedStudent.studentClass])
+            
+        })
+        .catch(err => err)
+    }
 }

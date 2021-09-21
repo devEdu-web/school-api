@@ -13,5 +13,6 @@ router.delete('/delete-student/:studentId', studentsController.deleteStudent)
 
 router.delete('/delete-all', studentsController.deleteAllStudents)
 
+router.put('/edit-student/:studentId', studentsController.editStudent)
 
 module.exports = router

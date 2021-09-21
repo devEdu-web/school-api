@@ -15,7 +15,7 @@ exports.getStudent = (req, res, next) => {
 
 exports.postStudent = (req, res, next) => {
     const student = req.body
-    Students.createStudent(student.name, student.age, student.grade, student.className)
+    Students.createStudent(student.name, student.age, student.grade, student.class_name)
     .then(result => {
         res.send(result)
     })
@@ -23,7 +23,15 @@ exports.postStudent = (req, res, next) => {
 
 }
 
-exports.editStudent = (req, res, next) => {}
+exports.editStudent = (req, res, next) => {
+    const studentId = req.params.studentId
+    const student = req.body
+
+    Students.editStudent(studentId, student.name, student.age, student.grade, student.class_name)
+    .then(result => res.send(result))
+    .catch(err => res.send(err))
+
+}
 
 exports.deleteStudent = (req, res, next) => {
     const studentId = req.params.studentId
