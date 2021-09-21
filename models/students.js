@@ -19,6 +19,14 @@ module.exports = class Student {
     }
 
     static getStudent(id) {
-        return database.query('SELECT * FROM students where student_id = ?', [id])
+        return database.query('SELECT * FROM students WHERE student_id = ?', [id])
+    }
+
+    static deleteStudent(id) {
+        return database.query('DELETE FROM students WHERE student_id = ?', [id])
+    }
+
+    static deleteAll() {
+        return database.query('DELETE FROM students')
     }
 }

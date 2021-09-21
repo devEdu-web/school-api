@@ -25,8 +25,17 @@ exports.postStudent = (req, res, next) => {
 
 exports.editStudent = (req, res, next) => {}
 
-exports.deleteStudent = (req, res, next) => {}
+exports.deleteStudent = (req, res, next) => {
+    const studentId = req.params.studentId
+    Students.deleteStudent(studentId)
+    .then(result => res.send(result))
+    .catch(err => res.send(err))
+}
 
-exports.deleteAllStudents = (req, res, next) => {}
+exports.deleteAllStudents = (req, res, next) => {
+    Students.deleteAll()
+    .then(result => res.send(result))
+    .catch(err => res.send(err))
+}
 
 // classes is basically finished, work on the students now
