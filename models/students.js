@@ -14,5 +14,8 @@ module.exports = class Student {
 
     }
 
+    static getAllStudents() {
+        return database.query('SELECT * FROM students')
+    }
 
 }

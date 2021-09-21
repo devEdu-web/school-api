@@ -1,6 +1,10 @@
 const Students = require('../models/students')
 
-exports.getAllStudents = (req, res, next) => {}
+exports.getAllStudents = (req, res, next) => {
+    Students.getAllStudents()
+    .then(students => res.send(students[0]))
+    .catch(err => res.send(err))
+}
 
 exports.getStudent = (req, res, next) => {}
 
