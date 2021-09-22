@@ -13,6 +13,21 @@ exports.getStudent = (req, res, next) => {
     .catch(err => res.send(err))
 }
 
+exports.getByClass = (req, res, next) => {
+    const studentClass = req.params.class
+    Students.getStudentsByClass(studentClass)
+    .then(students => res.send(students[0]))
+    .catch(err => res.send(err))
+}
+
+exports.getByPeriod = (req, res, next) => {
+    const period = req.params.period
+    // res.send(period)
+    Students.getStudentsByPeriod(period)
+    .then(students => res.send(students))
+    .catch(err => res.send(err))
+}
+
 exports.postStudent = (req, res, next) => {
     const student = req.body
     Students.createStudent(student.name, student.age, student.grade, student.class_name)

@@ -5,7 +5,11 @@ const { deleteStudent } = require('../models/students');
 
 router.get('/all-students', studentsController.getAllStudents)
 
-router.get('/student/:studentId', studentsController.getStudent)
+router.get('/get-student/:studentId', studentsController.getStudent)
+
+router.get('/get-by-period/:period', studentsController.getByPeriod)
+
+router.get('/get-by-class/:class', studentsController.getByClass)
 
 router.post('/new-student', studentsController.postStudent)
 

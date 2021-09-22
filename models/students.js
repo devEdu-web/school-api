@@ -22,6 +22,32 @@ module.exports = class Student {
         return database.query('SELECT * FROM students WHERE student_id = ?', [id])
     }
 
+    static getStudentsByClass(className) {
+        // const classNameUpper = className.toUpperCase()
+        return database.query('SELECT * FROM students where class_name = ?', [className])
+    }
+
+    static getStudentsByPeriod(period) {
+        const periodIdentifier = period[0].toUpperCase()
+
+        return this.getAllStudents()
+        .then(students => {
+            const fetchedStudents = students[0]
+            const studentsInThisPeriod = []
+
+            fetchedStudents.forEach(student => {
+                if(student.class_name[0] == periodIdentifier) {
+                    studentsInThisPeriod.push(student)
+                }
+            })
+
+            return studentsInThisPeriod
+
+        })
+        .catch(err => err)
+
+    }
+
     static deleteStudent(id) {
         return database.query('DELETE FROM students WHERE student_id = ?', [id])
     }
