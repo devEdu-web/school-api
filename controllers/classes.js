@@ -17,6 +17,23 @@ exports.getClass = (req, res, next) => {
 
 }
 
+exports.getByPeriod = (req, res, next) => {
+    const classPeriod = req.params.period
+    Class.fetchByperiod(classPeriod)
+    .then(result => res.send(result))
+    .catch(err => res.send(err))
+
+}
+
+exports.getByGrade = (req, res, next) => {
+    const classGrade = req.params.classGrade
+
+    Class.fetchByGrade(classGrade)
+    .then(classes => {res.send(classes[0])})
+    .catch(err => res.send(err))
+
+}
+
 exports.postClass = (req, res, next) => {
     const className = req.body.className
     const classGrade = req.body.classGrade
@@ -47,9 +64,9 @@ exports.editClass = (req, res, next) => {
 }
 
 exports.deleteClass = (req, res, next) => {
-    const classId = req.params.classId
+    const incomingClass = req.params.class_name
 
-    Class.deleteById(classId).then(result => {
+    Class.deleteClass(incomingClass).then(result => {
         res.send(result)
     }).catch(err => res.send(err))
 }

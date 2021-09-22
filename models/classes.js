@@ -36,8 +36,35 @@ module.exports = class Class {
         return database.query('SELECT * FROM classes where class_name = ?', [class_name])
     }
 
-    static deleteById(id) {
-        return database.query('DELETE FROM classes where class_id = ?', [id])
+    static fetchByGrade(grade) {
+        return database.query('SELECT * FROM classes where class_grade = ?', [grade])
+    }
+
+    static fetchByperiod(period) {
+
+        const classPeriodIdentifier = period[0].toUpperCase()
+
+        return this.fetchAllClasses()
+        .then(classes => {
+
+            const fetchedClasses = classes[0]
+            const classesInThisPeriod = []
+            
+
+            fetchedClasses.forEach(c => {
+                if(c.class_name[0] == classPeriodIdentifier) {
+                    classesInThisPeriod.push(c)
+                }
+            })
+
+            return classesInThisPeriod
+        })
+        .catch(err => err)
+
+    }
+
+    static deleteClass(className) {
+        return database.query('DELETE FROM classes where class_name = ?', [className])
     }
 
     static deleteAll() {
