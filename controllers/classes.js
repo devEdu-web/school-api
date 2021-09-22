@@ -7,9 +7,9 @@ exports.getAllClasses = (req, res, next) => {
 }
 
 exports.getClass = (req, res, next) => {
-    const classId = req.params.classId
+    const className = req.params.class_name
     // res.send(classId)
-    Class.fetchClass(classId)
+    Class.fetchClass(className)
     .then(fetchedClass => {
         res.json(fetchedClass[0][0])
     })
@@ -34,11 +34,12 @@ exports.postClass = (req, res, next) => {
 }
 
 exports.editClass = (req, res, next) => {
-    const id = req.params.classId
+    const incomingClass = req.params.class_name
     const className = req.body.class_name
     const classGrade = req.body.class_grade
 
-    Class.editClassById(id, className, classGrade).then(result => {
+    
+    Class.editClassById(incomingClass, className, classGrade).then(result => {
         res.send(result)
     }).catch(err => {
         res.send(err)
