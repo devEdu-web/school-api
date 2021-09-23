@@ -37,13 +37,27 @@ exports.getByGrade = (req, res, next) => {
 exports.postClass = (req, res, next) => {
     const className = req.body.className
     const classGrade = req.body.classGrade
-    
+    const length = className.length
+    // res.send(className[0])
     if(className && classGrade) {
-        Class.createNewClass(className, classGrade).then(result => {
-            res.send(result)
-        }).catch(err => {
-            res.send(err)
-        })
+
+        if(classGrade > 12 || classGrade <= 0) {
+            res.send('Invalid grade')
+        }
+        else if(className.length < 3) {
+            res.send('Invalid class name')
+        }
+        else if(className[0] !== 'E' && className[0] !== 'M' && className[0] !== 'H') {
+            res.send('Invalid class name z ')
+        }
+        else {
+
+            Class.createNewClass(className, classGrade).then(result => {
+                res.send(result)
+            }).catch(err => {
+                res.send(err)
+            })
+        }
 
     } else {
         res.status(400).send('There is one or more information missing.')
@@ -53,8 +67,14 @@ exports.postClass = (req, res, next) => {
 exports.editClass = (req, res, next) => {
     const incomingClass = req.params.class_name
     const className = req.body.class_name
-    const classGrade = req.body.class_grade
+    const classGrade = req.body.classGrade
 
+    // if(className.length > 3 || className.length < 3) {
+    //     res.send('Invalid name class')
+    // }
+    // else if(classGrade > 12 || classGrade <= 0) {
+    //     res.send('Invalid grade')
+    // }
     
     Class.editClassById(incomingClass, className, classGrade).then(result => {
         res.send(result)

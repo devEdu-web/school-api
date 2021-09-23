@@ -8,13 +8,13 @@ router.get('/get-class/:class_name', classesController.getClass)
 
 router.get('/get-by-period/:period', classesController.getByPeriod)
 
-router.get('/get-by-grade/:classGrade', classesController.getByGrade)
+router.get('/get-by-grade/:class_grade', classesController.getByGrade)
 
 router.post('/new-class', classesController.postClass)
 
 router.delete('/delete-class/:class_name', classesController.deleteClass)
 
-router.delete('/delete-classes', classesController.deleteAllClasses)
+router.delete('/delete-all-classes', classesController.deleteAllClasses)
 
 router.put('/edit-class/:class_name', classesController.editClass)
 

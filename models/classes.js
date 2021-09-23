@@ -8,7 +8,25 @@ module.exports = class Class {
     }
 
     static createNewClass(className, classGrade) {
-        return database.query(`INSERT INTO classes (class_name, class_grade) VALUES (?, ?)`, [className, classGrade])
+        let name = className.toUpperCase()
+        let grade = classGrade
+        // let error = false
+        
+
+
+        // if(grade > 12) {
+        //     name = null
+        // }
+
+        // if(name.length < 3) {
+        //     name = null
+        // }
+
+        // if(name[0] || 'E' || name[0] != 'M' || name[0] != 'H') {
+        //     name = null
+        // }
+
+        return database.query(`INSERT INTO classes (class_name, class_grade) VALUES (?, ?)`, [name, grade])
     }
 
     static editClassById(classIdentity, class_name = null, class_grade = null) {
@@ -21,6 +39,7 @@ module.exports = class Class {
                 class_name: class_name || classToUpdate.class_name,
                 class_grade: class_grade || classToUpdate.class_grade
             }
+                
             
             return database.query('UPDATE classes set class_name = ?, class_grade = ? where class_name = ?', [updatedClass.class_name, updatedClass.class_grade, classIdentity])
         })

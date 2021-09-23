@@ -15,7 +15,7 @@ router.post('/new-student', studentsController.postStudent)
 
 router.delete('/delete-student/:studentId', studentsController.deleteStudent)
 
-router.delete('/delete-all', studentsController.deleteAllStudents)
+router.delete('/delete-all-students', studentsController.deleteAllStudents)
 
 router.put('/edit-student/:studentId', studentsController.editStudent)
 
