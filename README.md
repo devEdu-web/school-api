@@ -62,7 +62,7 @@ Since this API is not available for public use, is only a project to practice, t
 
 ### Subject
 
-Here you have two options: **classes** or **students**, this will you're specifying witch table is going to suffer the action you will send.
+Here you have two options: **classes** or **students**, this will specifying witch table is going to suffer the action you will send.
 
 <br>
 
